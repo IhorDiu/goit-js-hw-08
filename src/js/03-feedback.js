@@ -15,13 +15,8 @@ function onFormInput(e) {
 
 continueEnteringMessage ();
 
-console.log('input', form.email);
-console.log('localStorage object', formData);
-
 function continueEnteringMessage (){
     const savedInput = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
-
-
    
     if (savedInput) {
         form.email.value = savedInput.email ?? '';
