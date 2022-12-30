@@ -15,21 +15,27 @@ function onFormInput(e) {
 
 continueEnteringMessage ();
 
-function onFormSubmit(e){
+console.log('input', form.email);
+console.log('localStorage object', formData);
+
+function continueEnteringMessage (){
+    const savedInput = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+
+
+   
+    if (savedInput) {
+        form.email.value = savedInput.email ?? '';
+        form.message.value = savedInput.message ?? '';
+        formData.email = savedInput.email ?? '';
+        formData.message = savedInput.message ?? '';
+        }
+    };
+  
+    function onFormSubmit(e){
         e.preventDefault();
         console.log(formData);
         e.currentTarget.reset();
         localStorage.removeItem(LOCALSTORAGE_KEY);
     };
-    
-function continueEnteringMessage (){
-    const savedMessage = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
-           
-    if (savedMessage) {
-        form.email.value = savedMessage.email;
-        form.message.value = savedMessage.message;
-        }
-    };
-
-
-
+ 
+ 
